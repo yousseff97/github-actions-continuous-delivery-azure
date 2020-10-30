@@ -3,6 +3,11 @@ name: Staging deployment
 on:
   pull_request:
     types: [labeled]
+env:
+  DOCKER_IMAGE_NAME: yousseff97-azure-ttt
+  IMAGE_REGISTRY_URL: docker.pkg.github.com
+  AZURE_WEBAPP_NAME: yousseff97-ttt-app
 jobs:
   build:
       runs-on: ubuntu-latest
+      if: contains('github.event.pull_request.labels.*.name','stage')
